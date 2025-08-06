@@ -16,12 +16,24 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+      {{ govukErrorSummary({
+    titleText: "There is a problem",
+    errorList: [
+      {
+        text: "Enter your full name",
+        href: "#"
+      }
+    ]
+  }) }}
+
+
+  
+
 
 
       <form class="form" action="/juggling-balls-answer" method="post">
 
         <p>
-         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
 {{ govukRadios({
   name: "HowManyBalls",
@@ -32,7 +44,13 @@
       isPageHeading: true,
       classes: "govuk-fieldset__legend--l"
     }
+
   },
+
+    errorMessage: {
+      text: "Enter your full name"
+    },
+
   items: [
     {
       value: "3 or more",
@@ -48,6 +66,10 @@
     }
   ]
 }) }}
+
+
+
+
         </p>
 
         {{ govukButton({
